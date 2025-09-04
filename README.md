@@ -65,7 +65,11 @@ Built stakeholder-ready dashboards in Tableau (`link`) from the CSV exports with
 - Customer Segmentation Dashboard - RFM clusters, revenue contribution, LTV predictors
 - Wasted Wage Bill → compared total vs wasted wages by year
  **Output:** `link to channel dashboard`, `link to customer dashboard`
+---
+## Dashboards
+![dashboard_1](Assets/Tables/ga4_campaign_dashboard.png)
 
+![dashboard_2](Assets/Tables/ga4_customer_dashboard.png)
 ---
 
 ### Question 1: Which marketing channels and campaigns generate the highest baseline performance?
@@ -80,7 +84,7 @@ By contrast, paid search (google/cpc) appeared smaller in raw totals. Impression
 ---
 
 ### Question 2: What is each channel’s incremental contribution to conversions and revenue?
-![dashboard 1](Assets/Tables/ga4_table2.png)
+![table 2](Assets/Tables/ga4_table2.png)
 
 The regression-based attribution reshuffles the leaderboard. While direct and organic looked strongest in raw totals, the incremental model shows paid search (google/cpc) accounts for ~45% of marginal conversions—the single largest driver once overlapping exposures are controlled for. This highlights paid search as the workhorse: additional CPC clicks reliably produce additional conversions.
 
