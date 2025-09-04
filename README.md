@@ -1,5 +1,5 @@
 # Analysis of Google Analytics 4 Marketing Data
-![GA4_Banner](GA4_Logo.webp)
+![GA4_Banner](GA4_Logo.png)
 This project evaluates digital campaign effectiveness and customer segmentation by leveraging cloud-based data engineering and analytics workflows. Using Google BigQuery for scalable SQL modeling, Python for statistical analysis, and Tableau for visualization, the pipeline transforms raw GA4 event data into actionable insights. The analysis calculates key marketing metrics (CTR, CVR, CPC, AOV), applies RFM-based clustering to segment customers, and answers five core questions around channel attribution, campaign ROI, purchase behavior, and segment value—concluding with strategic recommendations for optimizing spend allocation and targeting.
 ### Questions Answered
 1. How has the average cost/minute played changed over time?
