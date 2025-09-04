@@ -64,16 +64,17 @@ Built stakeholder-ready dashboards in Tableau (`link`) from the CSV exports with
 - Channel Dashboard — channel & campaign baselines (CTR, CVR, AOV), and regression-based attribution visualizations
 - Customer Segmentation Dashboard - RFM clusters, revenue contribution, LTV predictors
 - Wasted Wage Bill → compared total vs wasted wages by year
- **Output:** `link to channel dashboard`, `link to customer dashboard`
+ **Output:** [link to interactive channel dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_marketing_channels_dashboard/Dashboard2?publish=yes), [link to interactive customer dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_customer_rmf_dashboard/Dashboard1?publish=yes)
 ---
 ## Dashboards
-![dashboard_1](Assets/Tables/ga4_campaign_dashboard.png)
+![dashboard_1](Assets/ga4_campaign_dashboard.png)
 
-![dashboard_2](Assets/Tables/ga4_customer_dashboard.png)
+![dashboard_2](Assets/ga4_customer_dashboard.png)
+
 ---
 
 ### Question 1: Which marketing channels and campaigns generate the highest baseline performance?
-![table 1](Assets/Tables/ga4_table1.png)
+![table 1](Assets/ga4_table1.png)
 
 The baseline data shows that **direct traffic ((direct)/(none)) dominated raw totals**, with over 52,000 impressions but a very low CTR (0.08%). Despite very low CTR (~0.076%), **direct still produced 231 conversions and ~$13.4k revenue**, with an anomalously high “CVR” of ≈578% (231/40)—a quirk of the GA4 sample where conversions can occur without ad clicks. Treat this as a conversions-per-click ratio, not a true percentage. This reflects the “catch-all” nature of direct visits: low click efficiency, but meaningful sales because returning or loyal users often fall into this bucket.
 
@@ -84,7 +85,7 @@ By contrast, paid search (google/cpc) appeared smaller in raw totals. Impression
 ---
 
 ### Question 2: What is each channel’s incremental contribution to conversions and revenue?
-![table 2](Assets/Tables/ga4_table2.png)
+![table 2](Assets/ga4_table2.png)
 
 The regression-based attribution reshuffles the leaderboard. While direct and organic looked strongest in raw totals, the incremental model shows paid search (google/cpc) accounts for ~45% of marginal conversions—the single largest driver once overlapping exposures are controlled for. This highlights paid search as the workhorse: additional CPC clicks reliably produce additional conversions.
 
@@ -93,7 +94,7 @@ Organic traffic (<Other>/organic) captures ~23% of incremental share, suggesting
 ---
 
 ### Question 3: Did specific campaign changes or launches actually cause measurable lift?
-![table 2](Assets/Tables/ga4_table3.png)
+![table 2](Assets/ga4_table3.png)
 The difference-in-differences test focused on **google/cpc, treated as a new campaign beginning on 2020-12-15**. The regression shows a **significant positive interaction** (treated × post = +23.6 conversions/day, p = 0.004). This indicates that **CPC generated real incremental lift** beyond what would have occurred from background trends.
 
 Looking at averages, the control group fell sharply from ~60.2 to 37.2 conversions/day after mid-December, reflecting a general market slowdown. By contrast, CPC jumped from ~0.05 to 0.63 conversions/day in the same period. The main effect for “post” was strongly negative (−38.9), showing that overall demand dropped, but the treated × post term demonstrates that CPC rose against this tide.
@@ -101,7 +102,7 @@ Looking at averages, the control group fell sharply from ~60.2 to 37.2 conversio
 ---
 
 ### Question 4: How can customers be segmented by value and behavior?
-![table 4](Assets/Tables/ga4_table4.png)
+![table 4](Assets/ga4_table4.png)
 The RFM segmentation reveals a classic Pareto-style imbalance: a small minority of users generate the bulk of revenue. Two standout clusters dominate. **“Growing/Promising” users** (cluster 3, ≈3,545 customers) contribute ≈$253.6k in revenue with moderate average spend (≈$72 each). Meanwhile, the **“Loyal High-Value”** group (cluster 2, ≈214 customers), though tiny in size, generates ≈$93.3k in revenue thanks to an exceptional average order value (≈$436).
 
 By contrast, the vast majority of users fall into low-value clusters. “Occasional Buyers” (cluster 0, ≈145,000 customers) contribute only ≈$14.7k in revenue, while “Churn Risk / Low-Value” (cluster 1, ≈121,000 customers) are essentially inactive, accounting for less than $1k in total spend.
