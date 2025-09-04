@@ -2,11 +2,11 @@
 ![GA4_Banner](Assets/GA4_Logo.png)
 This project evaluates digital campaign effectiveness and customer segmentation by leveraging cloud-based data engineering and analytics workflows. Using Google BigQuery for scalable SQL modeling, Python for statistical analysis, and Tableau for visualization, the pipeline transforms raw GA4 event data into actionable insights. The analysis calculates key marketing metrics (CTR, CVR, CPC, AOV), applies RFM-based clustering to segment customers, and answers five core questions around channel attribution, campaign ROI, purchase behavior, and segment value—concluding with strategic recommendations for optimizing spend allocation and targeting.
 ### Questions Answered
-1. How has the average cost/minute played changed over time?
-2. How much of the wage bill is wasted on underused players?
-3. Who is overpaid relative to minutes?
-4. Which players have the biggest impact on games (via GIS)?
-5. Does impact align with wages—who are bargains vs inefficiencies?
+1. Which marketing channels and campaigns generate the highest baseline performance?
+2. What is each channel’s incremental contribution to conversions and revenue?
+3. Did specific campaign changes or launches actually cause measurable lift?
+4. How can customers be segmented by value and behavior?
+5. Which early behaviors predict long-term customer value (LTV)?
 
 ---
 
@@ -67,63 +67,47 @@ Built stakeholder-ready dashboards in Tableau (`link`) from the CSV exports with
 
 ---
 
-### Question 1: How has the cost/minute changed over time?
+### Question 1: Which marketing channels and campaigns generate the highest baseline performance?
 ![table 1](Assets/Tables/table1b.png)
 
-The data shows that Arsenal’s median cost per minute played dropped significantly from £2,731 in 20/21 to £2,248 in 21/22, reflecting early squad trimming and better utilization of wage spend. However, efficiency dipped in later seasons, peaking at £3,723 in 23/24 before improving slightly in 24/25 (£3,332).
+The baseline data shows that **direct traffic ((direct)/(none)) dominated raw totals**, with over 52,000 impressions but a very low CTR (0.08%). Despite that, it still produced **231 conversions and $13.3k in revenue**, thanks to a relatively strong CVR (5.8%). This reflects the “catch-all” nature of direct visits: low click efficiency, but meaningful sales because returning or loyal users often fall into this bucket.
 
-This trend highlights a diagnostic insight: as Arsenal invested in higher-caliber players during their title challenge years (23/24–24/25), wage inflation outpaced the efficiency gains of previous seasons. Injuries and rotation further drove up the cost per effective minute.
+Organic and referral sources (e.g., …/organic, …/referral) also looked strong, contributing steady conversions and revenue at healthy AOV levels (~$58). These channels perform like reliable background drivers of traffic and sales without the explicit costs of paid campaigns.
 
-From an optimization standpoint, the club should continue to monitor whether premium wages translate into consistent availability and impact. If not, future contracts need stricter alignment to minutes played or performance metrics.
-
-Strategically, this analysis suggests Arsenal has moved from cutting “deadwood” to the harder task of ensuring elite wages are justified by elite contributions. The risk now is less about wasted contracts and more about sustaining efficiency in a high-spend, title-chasing era.
+By contrast, paid search (google/cpc) appeared smaller in raw totals. Impressions and clicks were modest, and while it drove some conversions, it did not rival the volume of direct or organic. This is typical in raw rollups: last-touch channels like direct and organic appear dominant, while incremental contributors like paid search look understated.
 
 ---
 
-### Question 2: How much of the wage bill is wasted on underused players?
+### Question 2: What is each channel’s incremental contribution to conversions and revenue?
 ![dashboard 1](Assets/Tables/dashboard1.png)
 
-Arsenal’s total weekly wage bill has fluctuated between **£2.4M** and **£3.4M** over the last five seasons, with the biggest dip in 21/22 reflecting the club’s post-pandemic reset. By 23/24 and 24/25, wages returned to the £3.2–3.3M range—close to 20/21 levels in absolute terms. However, the picture looks different when framed against revenue: with turnover growing from £367M in 20/21 to £616.6M in 23/24, wages now represent a smaller share of total income, meaning **Arsenal’s financial capacity to sustain a large wage bill has actually improved**.
+The regression-based attribution reshuffles the leaderboard. While direct and organic looked strongest in raw totals, the incremental model shows paid search (google/cpc) accounts for ~45% of marginal conversions—the single largest driver once overlapping exposures are controlled for. This highlights paid search as the workhorse: additional CPC clicks reliably produce additional conversions.
 
-At the same time, the share of wages spent on underused players has steadily declined. In 20/21, nearly a quarter of the wage bill went to players featuring in less than 20% of minutes. By 24/25, this figure was just 12.5%. The club has clearly reduced “dead money” tied up in fringe contracts, a shift that reflects smarter squad management and fewer legacy deals weighing down the balance sheet.
-
-The strategic takeaway is twofold: **Arsenal not only trimmed inefficiencies but also grew into their wage bill as revenues surged**. With projected income in 24/25 estimated between £650M–£850M, even maintaining wages at current levels would leave the club in a stronger financial position than peers struggling with static revenues. Going forward, the challenge isn’t the size of the wage bill but ensuring new contracts continue to track player impact rather than sentiment or short-term hype.
+Organic traffic (<Other>/organic) captures ~23% of incremental share, suggesting genuine value, though lower than the raw rollups implied. Referral traffic (googlemerchandisestore.com/referral) holds ~10%, indicating steady but secondary contribution. Direct visits ((none)/(none)) shrink to ~8%, reflecting that much of their apparent strength in the baselines is overlap with other channels. Meanwhile, google/organic contributes near-zero incrementally, suggesting those sales are likely influenced by exposures elsewhere.
 
 ---
 
-### Question 3: Who is overpaid relative to minutes?
+### Question 3: Did specific campaign changes or launches actually cause measurable lift?
 ![table 2](Assets/Tables/table2.png)
-The raw £/minute figures for 24/25 highlight **Takehiro Tomiyasu** as an extreme outlier, costing nearly **£743K per minute played** due to major injuries that kept him sidelined for most of the season. Because his case reflects extraordinary circumstances rather than structural inefficiency, he is excluded from some of the further analysis to avoid skewing the dataset.
+The difference-in-differences test focused on **google/cpc, treated as a new campaign beginning on 2020-12-15**. The regression shows a **significant positive interaction** (treated × post = +23.6 conversions/day, p = 0.004). This indicates that **CPC generated real incremental lift** beyond what would have occurred from background trends.
 
-![table 3](Assets/Tables/table3.png)
-Looking at the adjusted table without Tomiyasu, a clearer picture emerges. Players such as **Neto (£28.9K/min)**, **Tierney (£12.5K/min)**, **Jesus (£11.4K/min)**, and **Zinchenko (£9.8K/min)** stand out as costly relative to their availability. These players not only carry high wages but also offer limited minutes, raising questions about their reliability as long-term contributors.
-
-The next step is to monitor whether this pattern persists across other metrics. If these names continue appearing among the least efficient by team contribution as well, it strengthens the case for either renegotiation or exit. This kind of analysis ensures Arsenal doesn’t just cut “deadwood” once but maintains a disciplined wage-to-contribution balance year after year.
+Looking at averages, the control group fell sharply from ~60.2 to 37.2 conversions/day after mid-December, reflecting a general market slowdown. By contrast, CPC jumped from ~0.05 to 0.63 conversions/day in the same period. The main effect for “post” was strongly negative (−38.9), showing that overall demand dropped, but the treated × post term demonstrates that CPC rose against this tide.
 
 ---
 
-### Question 4: Which players have the biggest impact on performance (via GIS)?
+### Question 4: How can customers be segmented by value and behavior?
 ![table 4](Assets/Tables/table4.png)
-To measure player impact, we began by looking at **Points Per Game (PPG)** — the average amount of points Arsenal earned with a given player on the field (0=loss, 1=draw, 3=win) — and **On-Off xG**, which tracks how many goals the team was expected to score and concede changed when the player was on versus off the field (below 0 means net negative, above 0 means net positive). **PPG reflects results**, while **On-Off xG captures underlying performance**. In 24/25 these two measures were highly correlated; once we excluded players with fewer than 20% of available minutes, they provided a strong proxy for a player’s influence on team outcomes.
+The RFM segmentation reveals a classic Pareto-style imbalance: a small minority of users generate the bulk of revenue. Two standout clusters dominate. **“Growing/Promising” users** (cluster 3, ≈3,545 customers) contribute ≈$253.6k in revenue with moderate average spend (≈$72 each). Meanwhile, the **“Loyal High-Value”** group (cluster 2, ≈214 customers), though tiny in size, generates ≈$93.3k in revenue thanks to an exceptional average order value (≈$436).
 
-I then combined these into a Game Impact Score (GIS). Using a formula '(0.3 * [zPPG]) + (0.7 * [zOnOffxG])' incorporating z-scores for both PPG and On-Off xG, weighted them 70:30 in favor of On-Off xG. This tilt reflects the view that performance metrics are more reliable than raw outcomes, while still incorporating results. Finally, scores were normalized within each season so that the top-performing player received a score of 100, allowing for relative comparison within the squad.
-
-![table 5](Assets/Tables/table5.png)
-The results for 24/25 highlight **Calafiori**, **Sterling**, **Saka**, and **Ødegaard** as Arsenal’s highest-impact players, with **Havertz** and **Nwaneri** also scoring strongly. On the other end, **White**, **Partey**, and **Raya** ranked lowest. Raya’s score illustrates one weakness of GIS: as a goalkeeper who played almost every match (94.9% of available minutes) there were too few “off-pitch” samples to meaningfully measure his swing effect. Similarly, injuries or differences in quality of opposition faced (e.g., White’s position shifting, Sterling predominantly getting minutes in easier low stakes games) can shift GIS up or down despite quality or a lack thereof in certain contexts.
-
-From a monitoring perspective, the **players to keep tabs on are those consistently scoring low GIS relative to their wages**. So far **White**, **Partey** and **Martinelli** appear as potential concerns, while Raya’s case suggests methodological caution, and Lewis-Skelly is a youth player who played in predominantly difficult games. Meanwhile, the cluster of high-impact young and core players — Saka, Ødegaard, Rice, Calafiori — reinforces the narrative that Arsenal’s wage structure is increasingly aligned with true value.
+By contrast, the vast majority of users fall into low-value clusters. “Occasional Buyers” (cluster 0, ≈145,000 customers) contribute only ≈$14.7k in revenue, while “Churn Risk / Low-Value” (cluster 1, ≈121,000 customers) are essentially inactive, accounting for less than $1k in total spend.
 
 ---
 
-### Question 5: Does impact align with wages—who are bargains vs inefficiencies?
+### Question 5: Which early behaviors predict long-term customer value (LTV)?
 ![table 6](Assets/Tables/table6.png)
-The first lens is a simple one: wages vs minutes played for the entire squad. This plot shows whether players are consistently available for the team relative to their salary. Here, Arsenal’s biggest winners are the **high wage/high minutes group**—Ødegaard, Rice, Partey, and Saliba—who represent reliable, pillars delivering minutes value for their contracts. On the opposite side, **Jesus, Zinchenko, and White** appear as red flags: high wages with relatively low minutes, which weakens their overall efficiency and raises concerns about long-term value. At the bottom left, youngsters like **Nwaneri and Lewis-Skelly** register as extremely low-cost, low-minute contributors—a healthy dynamic, since they provide upside without straining the wage bill.
+The simple LTV regression highlights a clear signal: **early purchases are by far the strongest predictor of long-term value**. The coefficient for early purchases is ≈70.7 and highly significant, meaning that customers who transact early are overwhelmingly more likely to contribute substantial revenue over their lifetime.
 
-![table 7](Assets/Tables/table7.png)
-When we add impact into the equation, the picture sharpens. The Player Impact vs Pay scatter confirms that **Arsenal’s biggest earners—Saka, Ødegaard, Rice, Havertz, Saliba—combine a strong GIS with high wages**, positioning them as justified spends. They also all fit the age profile, with all of them either already being prime age, or entering into their primes, showing a healthy core of players the squad is build around. However, **Partey and White** again surface as high-wage, low-impact players, mirroring their poor efficiency in the minutes plot, and Partey's age profile being in the red flags him again. **Martinelli**, is another player to watch out for, as he is on a high wage that is not reflecting his relatively poor impact. Him being a player with his prime still ahead of him, now might present a good opportunity to cash out on him while his value is still high. While Raya’s score is distorted by methodological quirks in evaluating goalkeepers, other players like **Calafiori, Nwaneri, and Timber** represent great contract value.
-
-![table 8](Assets/Tables/table8.png)
-The Cost per Minute vs Impact table reinforces these findings, highlighting **Jesus** as exceedingly costly relative to his actual contribution. Injuries play a role here, but the trend raises red flags for contract value if availability doesn’t improve, as this has been a consistent issue for three seasons. In contrast, **Nwaneri and Lewis-Skelly—both just 17 and 18 respectivley**—deliver exceptional impact for minimal cost, strengthening the case for continued youth integration as a cost-control mechanism. **Ben White** again is flagged as a high cost player, towards the edge of the standard deviation, with a poor GIS.
+Secondary predictors add nuance. Early events (≈0.044, significant) also correlate positively with revenue, reflecting that engagement signals—browsing, cart adds, or product views—matter for forecasting value. Early sessions show a borderline effect (p ≈ 0.052), suggesting that sheer visits alone are less reliable unless paired with transactions or deeper engagement. Days since first seen carries only a small positive effect, indicating that **longevity without early purchases does little to drive value**.
 
 ---
 ### Player Specific Conclusions & Recommendations Based on Data
