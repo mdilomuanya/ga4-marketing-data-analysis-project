@@ -65,7 +65,7 @@ Built stakeholder-ready dashboards in Tableau (`link`) from the CSV exports with
 - Customer Segmentation Dashboard - RFM clusters, revenue contribution, LTV predictors
 - Wasted Wage Bill → compared total vs wasted wages by year
 
- **Output:** [link to interactive channel dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_marketing_channels_dashboard/Dashboard2?publish=yes), [link to interactive customer dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_customer_rmf_dashboard/Dashboard1?publish=yes)
+ **Output:** [interactive channel dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_marketing_channels_dashboard/Dashboard2?publish=yes), [interactive customer dashboard](https://public.tableau.com/app/profile/matthew.david.ilomuanya/viz/ga4_customer_rmf_dashboard/Dashboard1?publish=yes)
  
 ---
 ## Dashboards
