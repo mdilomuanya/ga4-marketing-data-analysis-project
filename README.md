@@ -37,6 +37,7 @@ Built dbt-style layers in BigQuery to transform raw GA4 events into analysis-rea
 
 ### 3. Python: Statistical Analysis
 Using Python (pandas, statsmodels, scikit-learn, matplotlib) to quantify performance, incrementality, and audience quality:
+
 3a. Rule-Based Attribution (Baselines)
   - Grouped by channel and campaign to compute CTR, CVR, AOV, revenue
   - Produced baseline leaderboards for quick performance triage
