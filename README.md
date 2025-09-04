@@ -111,44 +111,35 @@ The simple LTV regression highlights a clear signal: **early purchases are by fa
 Secondary predictors add nuance. Early events (≈0.044, significant) also correlate positively with revenue, reflecting that engagement signals—browsing, cart adds, or product views—matter for forecasting value. Early sessions show a borderline effect (p ≈ 0.052), suggesting that sheer visits alone are less reliable unless paired with transactions or deeper engagement. Days since first seen carries only a small positive effect, indicating that **longevity without early purchases does little to drive value**.
 
 ---
-### Player Specific Conclusions & Recommendations Based on Data
-#### Sell or release Older Low-Minute Players
-- Tomiyasu, Neto, Tierney, Zinchenko: Each logged fewer than 20% of available minutes while on significant wages. Selling now avoids sunk costs and frees up squad spots.
-#### Consistently Poor Performers
-- Partey: Contract should be allowed to expire without renewal. At 31, recurring injuries and declining impact mean any extension would add inefficiency.
-- White: At 27, still prime-age, but his first season of low minutes/low impact is concerning. Give him one more season to rebound; if not, sell while value remains.
-#### Priority Extensions
-- Nwaneri & Lewis-Skelly: Both project as **high-impact bargains** and symbolize Arsenal’s youth-driven efficiency. Early extensions would protect against poaching.
-- Saliba: Played the second-most minutes in 24/25, combining consistency, age profile, and elite impact. Should be secured as a **top 3–5 earner** in the squad.
-#### Mixed Cases
-- Martinelli: Fairly valuable in the market but delivered poor impact scores, and on high wages. If a high-value replacement is available, consider cashing in.
-- Jesus: High impact per minute but chronically unavailable, especially problematic as Arsenal’s second-highest paid player. Renegotiate contract with **incentives tied to availability**, or prepare to release.
-#### Surprises
-- Sterling: Statistically provided strong impact-to-wage value despite skepticism from fans. His loan extension would be defensible, though not essential.
-- Raya: GIS underrates him because of the goalkeeper sample issue. Played 94.9% of minutes, suggesting a need for a more reliable understudy to spread risk.
+### Business Conclusions & Recommendations Based on Data
+#### 1. Raw performance favors organic, referral, and direct traffic — but risks overstating their value
+Baseline aggregates showed direct visits drove ≈231 conversions and $13.3k in revenue, while organic and referral sources appeared consistently strong. At face value, this would suggest doubling down on “free” channels. However, because these rollups are last-touch, they over-credit channels that appear at the end of the funnel and understate incremental contributors.
 
----
-### Alignment with Reality
-Interestingly, these data-driven recommendations align closely with Arsenal’s actual moves:
-- Arsenal have let go of Tomiyasu, Neto, Tierney, and Partey
-- Zinchenko’s role has diminished, and has been linked with moves away with his future uncertain
-- Both Nwaneri and Lewis-Skelly recently recieved long-term contract renewals with higher pay
-- Two players who play in Martinelli's position have been signed, and a contract upgrade for his rival in the squad Trossard, show he might be cashed-in
-- A solid backup for Raya, Kepa, was signed who can take minutes off him if need be
+**Best practice:** Use baseline leaderboards for quick diagnostics, but avoid making budget decisions on raw totals alone.
 
----
-### Financials and Squad Health Conclusions
-Beyond individuals, the broader financial picture shows Arsenal in a much stronger position:
-- **Wages as a percentage of revenue have declined**, despite absolute wage growth. Revenues surged from **£367M in 20/21 to £616.6M in 23/24**, with 24/25 projected as high as £850M.
-- The club can now comfortably sustain a £3.2–3.3M weekly wage bill without straining resources.
-- The **share of wages spent on underused players has fallen by nearly half** (23% in 20/21 → 12.5% in 24/25), marking a clear reduction in “deadwood” contracts.
-- The squad age profile is healthy: the wage bill is concentrated in 25–28 year olds (Rice, Saka, Ødegaard, Havertz, Saliba), who are both prime-age and high GIS scorers. Meanwhile, youth bargains (Nwaneri, Lewis-Skelly) provide cost-controlled upside, and veterans are no longer overrepresented.
+#### 2. Paid search (CPC) is the true workhorse for incremental lift
+Regression-based attribution revealed that google/cpc accounted for ≈45% of incremental conversions, far outpacing organic (≈23%) and referral (≈10%). Direct shrank to ≈8% once overlaps were controlled for. This shows that while paid search may not dominate in raw counts, its clicks consistently generate unique new conversions.
+
+**Best practice:** Treat paid search as a core driver of incremental growth and ensure budget allocations reflect its outsized marginal impact.
+
+#### 3. Paid search delivers causal lift, even in soft markets
+The DiD analysis showed that after the CPC launch on 2020-12-15, conversions rose by ≈23.6/day (p=0.004) despite an overall market decline of ≈−39/day. CPC effectively shielded performance when organic demand dropped.
+
+**Best Practice:** Maintain or increase paid investment during seasonal downturns — it can offset market weakness and prevent steeper revenue declines.
+
+#### 4. High-value users are a small minority, and retention is critical
+RFM segmentation showed that Loyal High-Value (≈214 customers, $93k revenue) and Growing/Promising (≈3,545 customers, $253k revenue) users generated the majority of sales, while over 260k Occasional/Low-Value customers added < $16k combined.
+
+**Best practice:** Prioritize retention and upsell strategies for high-value clusters and nurture “promising” users into loyal buyers. Broad campaigns across the low-value base have limited ROI.
+
+#### 5. Early purchases are the strongest predictor of lifetime value.
+The LTV regression confirmed that early purchases (coef ≈70.7, highly significant) far outweigh other predictors, with early events and engagement adding smaller signals.
+
+**Best practice:** Optimize campaigns and onboarding flows to secure a first purchase quickly. Discounts for first-time buyers, frictionless checkout, and personalized follow-ups can lock in future revenue.
 
 ---
 ### Strategic Takeaway
-Arsenal’s financial discipline and squad management have **transitioned from clearing legacy inefficiencies to optimizing at the margins**. The next phase isn’t about cutting obvious deadwood—it’s about **deciding how long to back prime but injury-prone players** (Jesus, White) and **locking in the high-impact core for their peak years**.
-
-The data shows a club increasingly aligned with elite standards: fewer wasted contracts, wages tied more closely to impact, and a youthful backbone capable of sustaining title challenges.
+Together, these findings suggest a best-practice marketing strategy that balances paid search for incremental lift, doubles down on early conversion, and invests in high-value customer retention. Broad top-of-funnel spend without targeting or follow-through will be less efficient than focusing resources on channels and users proven to drive durable revenue.
 
 ---
 
