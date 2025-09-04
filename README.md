@@ -69,9 +69,9 @@ Built stakeholder-ready dashboards in Tableau (`link`) from the CSV exports with
 ---
 
 ### Question 1: Which marketing channels and campaigns generate the highest baseline performance?
-![table 1](Assets/Tables/table1b.png)
+![table 1](Assets/Tables/ga4_table1.png)
 
-The baseline data shows that **direct traffic ((direct)/(none)) dominated raw totals**, with over 52,000 impressions but a very low CTR (0.08%). Despite that, it still produced **231 conversions and $13.3k in revenue**, thanks to a relatively strong CVR (5.8%). This reflects the “catch-all” nature of direct visits: low click efficiency, but meaningful sales because returning or loyal users often fall into this bucket.
+The baseline data shows that **direct traffic ((direct)/(none)) dominated raw totals**, with over 52,000 impressions but a very low CTR (0.08%). Despite very low CTR (~0.076%), **direct still produced 231 conversions and ~$13.4k revenue**, with an anomalously high “CVR” of ≈578% (231/40)—a quirk of the GA4 sample where conversions can occur without ad clicks. Treat this as a conversions-per-click ratio, not a true percentage. This reflects the “catch-all” nature of direct visits: low click efficiency, but meaningful sales because returning or loyal users often fall into this bucket.
 
 Organic and referral sources (e.g., …/organic, …/referral) also looked strong, contributing steady conversions and revenue at healthy AOV levels (~$58). These channels perform like reliable background drivers of traffic and sales without the explicit costs of paid campaigns.
 
@@ -80,7 +80,7 @@ By contrast, paid search (google/cpc) appeared smaller in raw totals. Impression
 ---
 
 ### Question 2: What is each channel’s incremental contribution to conversions and revenue?
-![dashboard 1](Assets/Tables/dashboard1.png)
+![dashboard 1](Assets/Tables/ga4_table2.png)
 
 The regression-based attribution reshuffles the leaderboard. While direct and organic looked strongest in raw totals, the incremental model shows paid search (google/cpc) accounts for ~45% of marginal conversions—the single largest driver once overlapping exposures are controlled for. This highlights paid search as the workhorse: additional CPC clicks reliably produce additional conversions.
 
@@ -89,7 +89,7 @@ Organic traffic (<Other>/organic) captures ~23% of incremental share, suggesting
 ---
 
 ### Question 3: Did specific campaign changes or launches actually cause measurable lift?
-![table 2](Assets/Tables/table2.png)
+![table 2](Assets/Tables/ga4_table3.png)
 The difference-in-differences test focused on **google/cpc, treated as a new campaign beginning on 2020-12-15**. The regression shows a **significant positive interaction** (treated × post = +23.6 conversions/day, p = 0.004). This indicates that **CPC generated real incremental lift** beyond what would have occurred from background trends.
 
 Looking at averages, the control group fell sharply from ~60.2 to 37.2 conversions/day after mid-December, reflecting a general market slowdown. By contrast, CPC jumped from ~0.05 to 0.63 conversions/day in the same period. The main effect for “post” was strongly negative (−38.9), showing that overall demand dropped, but the treated × post term demonstrates that CPC rose against this tide.
@@ -97,7 +97,7 @@ Looking at averages, the control group fell sharply from ~60.2 to 37.2 conversio
 ---
 
 ### Question 4: How can customers be segmented by value and behavior?
-![table 4](Assets/Tables/table4.png)
+![table 4](Assets/Tables/ga4_table4.png)
 The RFM segmentation reveals a classic Pareto-style imbalance: a small minority of users generate the bulk of revenue. Two standout clusters dominate. **“Growing/Promising” users** (cluster 3, ≈3,545 customers) contribute ≈$253.6k in revenue with moderate average spend (≈$72 each). Meanwhile, the **“Loyal High-Value”** group (cluster 2, ≈214 customers), though tiny in size, generates ≈$93.3k in revenue thanks to an exceptional average order value (≈$436).
 
 By contrast, the vast majority of users fall into low-value clusters. “Occasional Buyers” (cluster 0, ≈145,000 customers) contribute only ≈$14.7k in revenue, while “Churn Risk / Low-Value” (cluster 1, ≈121,000 customers) are essentially inactive, accounting for less than $1k in total spend.
@@ -105,7 +105,6 @@ By contrast, the vast majority of users fall into low-value clusters. “Occasio
 ---
 
 ### Question 5: Which early behaviors predict long-term customer value (LTV)?
-![table 6](Assets/Tables/table6.png)
 The simple LTV regression highlights a clear signal: **early purchases are by far the strongest predictor of long-term value**. The coefficient for early purchases is ≈70.7 and highly significant, meaning that customers who transact early are overwhelmingly more likely to contribute substantial revenue over their lifetime.
 
 Secondary predictors add nuance. Early events (≈0.044, significant) also correlate positively with revenue, reflecting that engagement signals—browsing, cart adds, or product views—matter for forecasting value. Early sessions show a borderline effect (p ≈ 0.052), suggesting that sheer visits alone are less reliable unless paired with transactions or deeper engagement. Days since first seen carries only a small positive effect, indicating that **longevity without early purchases does little to drive value**.
