@@ -12,7 +12,7 @@ This project evaluates digital campaign effectiveness and customer segmentation 
 
 ## Tools and Technologies
 - **Google BigQuery (SQL)** - Cloud-based data warehouse used for querying raw GA4 event data, staging, and building fact/dimension models
-- **Python** – For statistical analysis and clustering (`pandas`, `scikit-learn`), econometric modeling (statsmodels), data visualization (`matplotlib`), campaign KPI calculations, and CSV exports
+- **Python** – For statistical analysis and clustering (`pandas`, `scikit-learn`), econometric modeling (`statsmodels`), data visualization (`matplotlib`), campaign KPI calculations, and CSV exports
 - **Tableau** – For interactive dashboards, funnel analysis, RFM segmentation visualization, and channel attribution storytelling
 
 ---
